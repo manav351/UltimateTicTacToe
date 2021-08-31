@@ -1,0 +1,13 @@
+.internalbuttons{
+    min-height: 40px;
+    min-width: 40px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+}
+.internalbuttons:hover{
+    background-color: azure;
+}
+.internalbuttons:focus{
+    outline: none;
+}
