@@ -1,3 +1,7 @@
+.rowContainer{
+    display: flex;
+    margin-bottom: 40px;
+}
 .internalbuttons{
     min-height: 40px;
     min-width: 40px;
