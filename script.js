@@ -18,23 +18,27 @@ function buttonpressed(gridNumber,val){
     document.getElementById(`box${gridNumber}cell${val}`).disabled = true;
     checkResult(gridNumber);            // Updates the result
     disableAllgrids(val);               // Disables all the grids + enables the target grid
+    checkOuterResult();
     console.log(grid[0]);       
 }
-function checkResult(gridNumber){       // Updates the result + disables that specific grid on which it was called on
-    // disableAllButtons(gridNumber);
+function checkResult(gridNumber){       // Updates the result i.e., it checks the active grid for answers
     for(let i=0;i<3;i++){               // Here the gridNumber is the presently marked grid
         if(grid[gridNumber][0 + (3*i)] == grid[gridNumber][1+ (3*i)] && grid[gridNumber][1+ (3*i)] == grid[gridNumber][2+ (3*i)] && grid[gridNumber][0 + (3*i)] !=0){
             grid[0][gridNumber-1] = grid[gridNumber][0 + (3*i)];
+            // colorInnerGrid(grid[0][gridNumber-1]);
         }
         if(grid[gridNumber][0+i] == grid[gridNumber][3 +i] && grid[gridNumber][3+i] == grid[gridNumber][6+i] && grid[gridNumber][0+i] !=0){
             grid[0][gridNumber-1] = grid[gridNumber][0+i];
+            // colorInnerGrid(grid[0][gridNumber-1]);
         }
     }
     if(grid[gridNumber][0] == grid[gridNumber][4] && grid[gridNumber][4] == grid[gridNumber][8] && grid[gridNumber][0] !=0){
         grid[0][gridNumber-1] = grid[gridNumber][4];
+        // colorInnerGrid(grid[0][gridNumber-1]);
     }
     if(grid[gridNumber][2] == grid[gridNumber][4] && grid[gridNumber][4] == grid[gridNumber][6] && grid[gridNumber][2] !=0){
         grid[0][gridNumber-1] = grid[gridNumber][4];
+        // colorInnerGrid(grid[0][gridNumber-1]);
     }
 }
 
@@ -67,3 +71,26 @@ function disableAllgrids(gridNumber){       // Here the gridNumber is the grid w
     }
 }
 // setInterval(checkResult, 1000);
+
+function checkOuterResult(){                // This functions checks the overall result of Win and Loose
+    for(let i=0;i<3;i++){                   // Here the gridNumber is the presently marked grid
+        if(grid[0][0 + (3*i)] == grid[0][1+ (3*i)] && grid[0][1+ (3*i)] == grid[0][2+ (3*i)] && grid[0][0 + (3*i)] !=0){
+            alert(`Player ${grid[0][3*i]} Won`);
+        }
+        if(grid[0][0+i] == grid[0][3 +i] && grid[0][3+i] == grid[0][6+i] && grid[0][0+i] !=0){
+            alert(`Player ${grid[0][i]} Won`);
+        }
+    }
+    if(grid[0][0] == grid[0][4] && grid[0][4] == grid[0][8] && grid[0][0] !=0){
+        alert(`Player ${grid[0][4]} Won`);
+    }
+    if(grid[0][2] == grid[0][4] && grid[0][4] == grid[0][6] && grid[0][2] !=0){
+        alert(`Player ${grid[0][4]} Won`);
+    }
+}
+
+// function colorInnerGrid(gridNumber){        // This functions gives the color so that the player can know
+//     for(let i=0;i<10;i++){                  // Here the gridNumber is the currect result
+//         document.getElementById(`box${gridNumber}cell${i}`).style.backgroundColor = "red";
+//     }
+// }
