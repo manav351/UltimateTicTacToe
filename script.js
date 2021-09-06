@@ -7,11 +7,11 @@ function buttonpressed(gridNumber,val){
     grid[gridNumber][val-1] = counter;
     if(counter == 1){
         counter = 2;
-        document.getElementById("statusBar").innerHTML = "Turn : Player O | Player 2";
+        document.getElementById("statusBar").innerHTML = "Turn : Player \u25EF | Player 2";
     }
     else{
         counter = 1;
-        document.getElementById("statusBar").innerHTML = "Turn : Player X | Player 1";
+        document.getElementById("statusBar").innerHTML = "Turn : Player \u274C | Player 1";
     }
     if(grid[gridNumber][val-1] == 1)document.getElementById(`box${gridNumber}cell${val}`).innerHTML = "\u274C";
     else document.getElementById(`box${gridNumber}cell${val}`).innerHTML = "\u25EF";
@@ -25,20 +25,16 @@ function checkResult(gridNumber){       // Updates the result i.e., it checks th
     for(let i=0;i<3;i++){               // Here the gridNumber is the presently marked grid
         if(grid[gridNumber][0 + (3*i)] == grid[gridNumber][1+ (3*i)] && grid[gridNumber][1+ (3*i)] == grid[gridNumber][2+ (3*i)] && grid[gridNumber][0 + (3*i)] !=0){
             grid[0][gridNumber-1] = grid[gridNumber][0 + (3*i)];
-            // colorInnerGrid(grid[0][gridNumber-1]);
         }
         if(grid[gridNumber][0+i] == grid[gridNumber][3 +i] && grid[gridNumber][3+i] == grid[gridNumber][6+i] && grid[gridNumber][0+i] !=0){
             grid[0][gridNumber-1] = grid[gridNumber][0+i];
-            // colorInnerGrid(grid[0][gridNumber-1]);
         }
     }
     if(grid[gridNumber][0] == grid[gridNumber][4] && grid[gridNumber][4] == grid[gridNumber][8] && grid[gridNumber][0] !=0){
         grid[0][gridNumber-1] = grid[gridNumber][4];
-        // colorInnerGrid(grid[0][gridNumber-1]);
     }
     if(grid[gridNumber][2] == grid[gridNumber][4] && grid[gridNumber][4] == grid[gridNumber][6] && grid[gridNumber][2] !=0){
         grid[0][gridNumber-1] = grid[gridNumber][4];
-        // colorInnerGrid(grid[0][gridNumber-1]);
     }
 }
 
@@ -61,9 +57,12 @@ function disableAllgrids(gridNumber){       // Here the gridNumber is the grid w
         for(let i=1;i<10;i++)
             if(grid[0][i-1] == 0)
                 enableAllButtons(i);
-        document.getElementById("statusBar").innerHTML = `Turn : Player ${counter} | Free Move`
+            else
+                disableAllButtons(i);
+        if(counter == 1)document.getElementById("statusBar").innerHTML = `Turn : Player \u274C | Player ${counter} | Free Move`;
+        else document.getElementById("statusBar").innerHTML = `Turn : Player \u25EF | Player ${counter} | Free Move`;
     }
-    else{
+    else{                                   // Normal Concept
         for(let i=1;i<10;i++)
             if(i != gridNumber)
                 disableAllButtons(i);
@@ -88,9 +87,3 @@ function checkOuterResult(){                // This functions checks the overall
         alert(`Player ${grid[0][4]} Won`);
     }
 }
-
-// function colorInnerGrid(gridNumber){        // This functions gives the color so that the player can know
-//     for(let i=0;i<10;i++){                  // Here the gridNumber is the currect result
-//         document.getElementById(`box${gridNumber}cell${i}`).style.backgroundColor = "red";
-//     }
-// }

@@ -1,7 +1,13 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .rowContainer{
     display: flex;
     margin-bottom: 40px;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .internalbuttons{
     min-height: 40px;
