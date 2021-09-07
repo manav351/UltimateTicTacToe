@@ -39,3 +39,18 @@ body{
     color: white;
     border-radius: 20px 20px 0px 0px;
 }
+.restartButton button{
+    position: absolute;
+    right: 10px;
+    height: 3rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+.restartButton button:focus{
+    border: none;
+    outline: none;
+}
+.restartButton button:hover{
+    background-color: azure;
+}

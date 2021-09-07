@@ -13,13 +13,24 @@ function buttonpressed(gridNumber,val){
         counter = 1;
         document.getElementById("statusBar").innerHTML = "Turn : Player \u274C | Player 1";
     }
-    if(grid[gridNumber][val-1] == 1)document.getElementById(`box${gridNumber}cell${val}`).innerHTML = "\u274C";
-    else document.getElementById(`box${gridNumber}cell${val}`).innerHTML = "\u25EF";
+    if(grid[gridNumber][val-1] == 1)
+        document.getElementById(`box${gridNumber}cell${val}`).innerHTML = "\u274C";
+    else 
+        document.getElementById(`box${gridNumber}cell${val}`).innerHTML = "\u25EF";
     document.getElementById(`box${gridNumber}cell${val}`).disabled = true;
     checkResult(gridNumber);            // Updates the result
     disableAllgrids(val);               // Disables all the grids + enables the target grid
     checkOuterResult();
-    console.log(grid[0]);       
+    /* let temporaryString = "";
+    for(let i=0;i<10;i++){
+        for(let j=0;j<9;j++){
+            temporaryString += grid[i][j] + " ";
+        }
+        temporaryString += "\n";
+    }    
+    console.clear();
+    console.log(temporaryString);
+    console.log("------------------------------------------");       */
 }
 function checkResult(gridNumber){       // Updates the result i.e., it checks the active grid for answers
     for(let i=0;i<3;i++){               // Here the gridNumber is the presently marked grid
@@ -59,8 +70,10 @@ function disableAllgrids(gridNumber){       // Here the gridNumber is the grid w
                 enableAllButtons(i);
             else
                 disableAllButtons(i);
-        if(counter == 1)document.getElementById("statusBar").innerHTML = `Turn : Player \u274C | Player ${counter} | Free Move`;
-        else document.getElementById("statusBar").innerHTML = `Turn : Player \u25EF | Player ${counter} | Free Move`;
+        if(counter == 1)
+            document.getElementById("statusBar").innerHTML = `Turn : Player \u274C | Player ${counter} | Free Move`;
+        else 
+            document.getElementById("statusBar").innerHTML = `Turn : Player \u25EF | Player ${counter} | Free Move`;
     }
     else{                                   // Normal Concept
         for(let i=1;i<10;i++)
@@ -85,5 +98,23 @@ function checkOuterResult(){                // This functions checks the overall
     }
     if(grid[0][2] == grid[0][4] && grid[0][4] == grid[0][6] && grid[0][2] !=0){
         alert(`Player ${grid[0][4]} Won`);
+    }
+}
+
+function restartButtonClick(){
+    let ans = window.confirm("Are you sure you want to Restart?");
+    console.log(ans);
+    if(ans == true){
+        document.getElementById("statusBar").innerHTML = `X Moves First | Player 1 | Free Move`;
+        for(let i=0;i<10;i++){
+            for(let j=0;j<9;j++)
+            grid[i][j] = 0;
+        }
+        for(let i=1;i<10;i++){
+            for(let j=1;j<10;j++){
+                document.getElementById(`box${i}cell${j}`).disabled = false;
+                document.getElementById(`box${i}cell${j}`).innerHTML = "";
+            }
+        }
     }
 }
