@@ -21,16 +21,14 @@ function buttonpressed(gridNumber,val){
     checkResult(gridNumber);            // Updates the result
     disableAllgrids(val);               // Disables all the grids + enables the target grid
     checkOuterResult();
-    /* let temporaryString = "";
+    /* let temporaryString = "";        // Print all grid values
     for(let i=0;i<10;i++){
-        for(let j=0;j<9;j++){
+        for(let j=0;j<9;j++)
             temporaryString += grid[i][j] + " ";
-        }
         temporaryString += "\n";
     }    
     console.clear();
-    console.log(temporaryString);
-    console.log("------------------------------------------");       */
+    console.log(temporaryString);       */
 }
 function checkResult(gridNumber){       // Updates the result i.e., it checks the active grid for answers
     for(let i=0;i<3;i++){               // Here the gridNumber is the presently marked grid
@@ -82,21 +80,24 @@ function disableAllgrids(gridNumber){       // Here the gridNumber is the grid w
         enableAllButtons(gridNumber);
     }
 }
-// setInterval(checkResult, 1000);
 
 function checkOuterResult(){                // This functions checks the overall result of Win and Loose
     for(let i=0;i<3;i++){                   // Here the gridNumber is the presently marked grid
         if(grid[0][0 + (3*i)] == grid[0][1+ (3*i)] && grid[0][1+ (3*i)] == grid[0][2+ (3*i)] && grid[0][0 + (3*i)] !=0){
+            runConfetti();
             alert(`Player ${grid[0][3*i]} Won`);
         }
         if(grid[0][0+i] == grid[0][3 +i] && grid[0][3+i] == grid[0][6+i] && grid[0][0+i] !=0){
+            runConfetti();
             alert(`Player ${grid[0][i]} Won`);
         }
     }
     if(grid[0][0] == grid[0][4] && grid[0][4] == grid[0][8] && grid[0][0] !=0){
+        runConfetti();
         alert(`Player ${grid[0][4]} Won`);
     }
     if(grid[0][2] == grid[0][4] && grid[0][4] == grid[0][6] && grid[0][2] !=0){
+        runConfetti();
         alert(`Player ${grid[0][4]} Won`);
     }
 }
@@ -106,6 +107,7 @@ function restartButtonClick(){
     console.log(ans);
     if(ans == true){
         document.getElementById("statusBar").innerHTML = `X Moves First | Player 1 | Free Move`;
+        counter = 1;
         for(let i=0;i<10;i++){
             for(let j=0;j<9;j++)
             grid[i][j] = 0;
@@ -116,5 +118,14 @@ function restartButtonClick(){
                 document.getElementById(`box${i}cell${j}`).innerHTML = "";
             }
         }
+        confetti.stop();
     }
+}
+
+function runConfetti(){
+    confetti.start();
+}
+
+function undoButton(){
+    alert("This Function is under development");
 }

@@ -5,18 +5,19 @@
 4. Status Bar → DONE
 5. Won the gridNumber → tageted the same grid → enables all → does not disable self (experienced in gridNUmber = 1) → DONE
 6. Free Move → tell which peice to move. → DONE
-14. Restart the game button with pop-up. → DONE
+7. Restart the game button with pop-up. → DONE
 
-7. What if all the buttons of destination cells are filled → inner grid is Draw ?
-8. Mention No UNDO in Instructions/ Implement it.
-9. Color the won according to Player → Have to use overlay for entire grid
-10. Scrolls on touch mode → Verify on different devices
-11. If height of frame is smaller than min height, then bottom gets paste in middle. To experence that, reduce the height and then scroll. Rectify it
-12. Change how players win. Try to add some party pops.
-13. Add a restart Button→ Asks again→ refresh the game
+8. What if all the buttons of destination cells are filled → inner grid is Draw ?
+9. Mention No UNDO in Instructions/ Implement it.
+10. Color the won according to Player → Have to use overlay for entire grid
+11. Scrolls on touch mode → Verify on different devices
+12. If height of frame is smaller than min height, then bottom gets paste in middle. To experence that, reduce the height and then scroll. Rectify it
+13. Change how players win. Try to add some party pops.
+14. Add a restart Button→ Asks again→ refresh the game
 15. Can implement undo using stack of which button of which grid is pressed.
 16. Confeti on winning
-17. Design the restart button UI
+17. Design the restart button UI.
+18. Buttons to play a script that updates the grid to a win of element so that end features can be tested
 
 
 ### Points to Appreciate

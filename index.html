@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Ultimate Tic Tac Toe</title>
+    <script src="confetti.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
@@ -173,6 +174,11 @@
         </div>
     </div>
     <div id="statusBar" class="statusBar">X Moves First | Player 1 | Free Move</div>
-    <div id="restartButton" class="restartButton"><button onclick="restartButtonClick()">Restart</button></div>
+    <div class="toolPanel">
+        TOOL BOX
+        <div id="restartButton" class="restartButton"><button onclick="undoButton()">&#9100; <span> Undo </span> </button></div>
+        <div id="restartButton" class="restartButton"><button onclick="restartButtonClick()">&#8634; <span> Restart </span> </button></div>
+        <div id="restartButton" class="restartButton"><button onclick="undoButton()">&#9658; <span> Auto Play </span> </button></div>
+    </div>
 </body>
 </html>
