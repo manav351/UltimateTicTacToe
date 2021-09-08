@@ -17,7 +17,8 @@
 15. Can implement undo using stack of which button of which grid is pressed.
 16. Confeti on winning
 17. Design the restart button UI.
-18. Buttons to play a script that updates the grid to a win of element so that end features can be tested
+18. Buttons to play a script that updates the grid to a win of element so that end features can be tested.
+19. What if grid has started working, then autoplay will not work well. implement refresh and then autoplay.
 
 
 ### Points to Appreciate

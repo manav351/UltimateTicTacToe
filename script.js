@@ -30,6 +30,7 @@ function buttonpressed(gridNumber,val){
     console.clear();
     console.log(temporaryString);       */
 }
+
 function checkResult(gridNumber){       // Updates the result i.e., it checks the active grid for answers
     for(let i=0;i<3;i++){               // Here the gridNumber is the presently marked grid
         if(grid[gridNumber][0 + (3*i)] == grid[gridNumber][1+ (3*i)] && grid[gridNumber][1+ (3*i)] == grid[gridNumber][2+ (3*i)] && grid[gridNumber][0 + (3*i)] !=0){
@@ -81,30 +82,37 @@ function disableAllgrids(gridNumber){       // Here the gridNumber is the grid w
     }
 }
 
+function winnerDisplay(winner){
+    confetti.start();
+    let windowD = document.getElementById("winnerDisplayWindow");
+    document.getElementById("blurOverlay").style.display = "block";
+    windowD.style.display = "flex";
+    windowD.style.height = "300px";
+    windowD.style.width = "300px";
+    windowD.innerHTML = winner + `<button onclick="restartButtonClick()">&#8634; <span> Restart </span>` ;
+}
+
 function checkOuterResult(){                // This functions checks the overall result of Win and Loose
     for(let i=0;i<3;i++){                   // Here the gridNumber is the presently marked grid
         if(grid[0][0 + (3*i)] == grid[0][1+ (3*i)] && grid[0][1+ (3*i)] == grid[0][2+ (3*i)] && grid[0][0 + (3*i)] !=0){
-            runConfetti();
-            alert(`Player ${grid[0][3*i]} Won`);
+            winnerDisplay(`Player ${grid[0][3*i]} Won`);
         }
         if(grid[0][0+i] == grid[0][3 +i] && grid[0][3+i] == grid[0][6+i] && grid[0][0+i] !=0){
-            runConfetti();
-            alert(`Player ${grid[0][i]} Won`);
+            winnerDisplay(`Player ${grid[0][i]} Won`);
         }
     }
     if(grid[0][0] == grid[0][4] && grid[0][4] == grid[0][8] && grid[0][0] !=0){
-        runConfetti();
-        alert(`Player ${grid[0][4]} Won`);
+        winnerDisplay(`Player ${grid[0][4]} Won`);
     }
     if(grid[0][2] == grid[0][4] && grid[0][4] == grid[0][6] && grid[0][2] !=0){
-        runConfetti();
-        alert(`Player ${grid[0][4]} Won`);
+        winnerDisplay(`Player ${grid[0][4]} Won`);
     }
 }
 
+// Tool Box Button Implementation
 function restartButtonClick(){
     let ans = window.confirm("Are you sure you want to Restart?");
-    console.log(ans);
+    console.log("Restart ?" + ans);
     if(ans == true){
         document.getElementById("statusBar").innerHTML = `X Moves First | Player 1 | Free Move`;
         counter = 1;
@@ -119,13 +127,22 @@ function restartButtonClick(){
             }
         }
         confetti.stop();
+        document.getElementById("blurOverlay").style.display = "none";
+        document.getElementById("winnerDisplayWindow").style.display = "none";
     }
 }
 
-function runConfetti(){
-    confetti.start();
+function autoPlay(){
+    let playValues = [[1,9] , [9,1] , [1,5] , [5,1], [1,1],[9,4] , [4,6] , [6,4] , [4,5], [5,4], [4,4], [9,7], [7,3], [3,7],[7,5],[5,7],[7,7]];
+    let counter = 0;
+    function autoPlayValue(){
+        document.getElementById(`box${playValues[counter][0]}cell${playValues[counter][1]}`).click();
+        counter++;
+        if(counter == playValues.length)
+            clearInterval(myInterval);
+    }
+    let myInterval = setInterval(autoPlayValue, 300);
 }
-
 function undoButton(){
-    alert("This Function is under development");
+    alert("this function is in Development")
 }
