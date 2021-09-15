@@ -130,10 +130,17 @@ function restartButtonClick(){
         document.getElementById("blurOverlay").style.display = "none";
         document.getElementById("winnerDisplayWindow").style.display = "none";
     }
+    else return true;
 }
 
 function autoPlay(){
     let playValues = [[1,9] , [9,1] , [1,5] , [5,1], [1,1],[9,4] , [4,6] , [6,4] , [4,5], [5,4], [4,4], [9,7], [7,3], [3,7],[7,5],[5,7],[7,7]];
+    for(let i=0;i<10;i++){                  // To check whether the user has started playing or not
+        for(let j=0; j<9;j++)               // If yes, then ask him to refresh first
+            if(grid[i][j] != 0)
+                if(restartButtonClick())    // If user denies, continue the game
+                    return;
+    }
     let counter = 0;
     function autoPlayValue(){
         document.getElementById(`box${playValues[counter][0]}cell${playValues[counter][1]}`).click();
@@ -145,4 +152,10 @@ function autoPlay(){
 }
 function undoButton(){
     alert("this function is in Development")
+}
+
+function skipInstructionsButton(){
+    let windowD = document.getElementById("blurOverlay");
+    windowD.style.display = "none";
+    document.getElementById("instructions").style.display = "none";
 }

@@ -106,3 +106,23 @@ body{
     left: 0;
     backdrop-filter: blur(3px);
 }
+
+.instructions{
+    z-index: 1;
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    background-color: rgba(58, 58, 58, 0.705);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.skipInstructions{
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 130px;
+    background-color: rgb(255, 255, 255);
+}
