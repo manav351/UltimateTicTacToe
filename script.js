@@ -111,7 +111,7 @@ function checkOuterResult(){                // This functions checks the overall
 function restartButtonClick(){
     // document.getElementById("winnerDisplayWindow").style.display = "none";
     document.getElementById("blurOverlay").style.display = "block";
-    document.getElementById("restartWindow").style.display = "block";
+    document.getElementById("restartWindow").style.display = "flex";
 }
 function restartButtonClickYes(){
     document.getElementById("blurOverlay").style.display = "none";
