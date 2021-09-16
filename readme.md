@@ -19,6 +19,8 @@
 17. Design the restart button UI.
 19. What if grid has started working, then autoplay will not work well. implement refresh and then autoplay.
 20. Instructions Panel
+21. Add instructions button in tool box.
+22. If user denies to auto play then also it is playing because of new restart window implementation.
 
 
 ### Points to Appreciate

@@ -87,9 +87,7 @@ function winnerDisplay(winner){
     let windowD = document.getElementById("winnerDisplayWindow");
     document.getElementById("blurOverlay").style.display = "block";
     windowD.style.display = "flex";
-    windowD.style.height = "300px";
-    windowD.style.width = "300px";
-    windowD.innerHTML = winner + `<button onclick="restartButtonClick()">&#8634; <span> Restart </span>` ;
+    windowD.innerHTML = winner + `<button onclick="restartButtonClickYes()">&#8634; <span> Restart </span>` ;
 }
 
 function checkOuterResult(){                // This functions checks the overall result of Win and Loose
@@ -111,26 +109,33 @@ function checkOuterResult(){                // This functions checks the overall
 
 // Tool Box Button Implementation
 function restartButtonClick(){
-    let ans = window.confirm("Are you sure you want to Restart?");
-    console.log("Restart ?" + ans);
-    if(ans == true){
-        document.getElementById("statusBar").innerHTML = `X Moves First | Player 1 | Free Move`;
-        counter = 1;
-        for(let i=0;i<10;i++){
-            for(let j=0;j<9;j++)
-            grid[i][j] = 0;
-        }
-        for(let i=1;i<10;i++){
-            for(let j=1;j<10;j++){
-                document.getElementById(`box${i}cell${j}`).disabled = false;
-                document.getElementById(`box${i}cell${j}`).innerHTML = "";
-            }
-        }
-        confetti.stop();
-        document.getElementById("blurOverlay").style.display = "none";
-        document.getElementById("winnerDisplayWindow").style.display = "none";
+    // document.getElementById("winnerDisplayWindow").style.display = "none";
+    document.getElementById("blurOverlay").style.display = "block";
+    document.getElementById("restartWindow").style.display = "block";
+}
+function restartButtonClickYes(){
+    document.getElementById("blurOverlay").style.display = "none";
+    document.getElementById("restartWindow").style.display = "none";
+    document.getElementById("statusBar").innerHTML = `X Moves First | Player 1 | Free Move`;
+    counter = 1;
+    for(let i=0;i<10;i++){
+        for(let j=0;j<9;j++)
+        grid[i][j] = 0;
     }
-    else return true;
+    for(let i=1;i<10;i++){
+        for(let j=1;j<10;j++){
+            document.getElementById(`box${i}cell${j}`).disabled = false;
+            document.getElementById(`box${i}cell${j}`).innerHTML = "";
+        }
+    }
+    confetti.stop();
+    document.getElementById("blurOverlay").style.display = "none";
+    document.getElementById("winnerDisplayWindow").style.display = "none";
+}
+
+function restartButtonClickNo(){
+    document.getElementById("blurOverlay").style.display = "none";
+    document.getElementById("restartWindow").style.display = "none";
 }
 
 function autoPlay(){
