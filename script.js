@@ -164,3 +164,8 @@ function skipInstructionsButton(){
     windowD.style.display = "none";
     document.getElementById("instructions").style.display = "none";
 }
+
+function showInstructions(){
+    document.getElementById("blurOverlay").style.display = "block";
+    document.getElementById("instructions").style.display = "flex";
+}
