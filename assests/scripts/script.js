@@ -140,7 +140,9 @@ function restartButtonClickYes(){
             document.getElementById(`box${i}cell${j}`).innerHTML = "";
         }
     }
-    winnerWindowCancel();
+    confetti.stop();
+    document.getElementById("blurOverlay").style.display = "none";
+    document.getElementById("winnerDisplayWindow").style.display = "none";
 }
 
 function restartButtonClickNo(){
@@ -181,7 +183,10 @@ function showInstructions(){
 }
 
 function winnerWindowCancel(){
-    // disableAllgrids(15);
+    console.log("winner window cancel pressed")
+    for(let i = 1; i <= 9;i ++)
+        for(let j = 1; j <= 9; j++)
+            document.getElementById(`box${i}cell${j}`).disabled = true;
     confetti.stop();
     document.getElementById("blurOverlay").style.display = "none";
     document.getElementById("winnerDisplayWindow").style.display = "none";
