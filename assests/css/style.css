@@ -12,10 +12,11 @@ body{
     height: 100vh;
     width: 100%;
     display: flex;
-    flex-direction:column;
-    /* justify-content: center; */
+    flex-direction: column;
     align-items: center;
-    background-image: url('https://i.pinimg.com/originals/5d/9f/61/5d9f6140fb8e45c1a1f05033ce3f456c.jpg');
+    background-image: url(https://yellowtree.photography/wp-content/uploads/2015/12/dark-wood-floors-background-black-laminate-floor-wallpapers-dark-wood-floors-background.jpg);
+    background-size: contain;
+    background-position-x: center;
 }
 .centerContainer{
     display: flex;
@@ -33,6 +34,7 @@ body{
     outline: none;
     border: none;
     border-radius: 2px;
+    background-color:#ffffff78
 }
 .internalbuttons:hover{
     background-color: azure;
@@ -171,6 +173,7 @@ body{
     align-items: center;
     top: 10%;
     left: 10%;
+    border-radius: 5px;
 }
 .mainInstructionsPanel div{
     text-align: center;
