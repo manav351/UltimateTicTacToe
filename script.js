@@ -1,8 +1,21 @@
+{/* <reference path="jquery-3.6.0.min.js" /> */}
 let grid = [];
+let counter = 1;
+
 for(let i=0;i<10;i++){
     grid[i] = [0,0,0,0,0,0,0,0,0];
 }
-let counter = 1;
+
+// set clickListener for grid buttons
+(function (){
+    $(".internalbuttons").each(function(){
+        $(this).on("click",function(){
+            const nums = (this.id).replace(/\D/g,'')
+            buttonpressed(nums[0],nums[1]);
+        });
+    });
+})();
+
 function buttonpressed(gridNumber,val){
     grid[gridNumber][val-1] = counter;
     if(counter == 1){
