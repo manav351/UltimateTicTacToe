@@ -1,16 +1,35 @@
 body{
+    position: relative;
+}
+.mainTitle{
+    height:5vh;
+    font: 600 5vh/5vh Poppins;
+    margin: 4vh;
+    color: white;
+    text-shadow: -1px 5px 5px black;
+}
+#mainContainer{
     height: 100vh;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction:column;
+    /* justify-content: center; */
     align-items: center;
     background-image: url('https://i.pinimg.com/originals/5d/9f/61/5d9f6140fb8e45c1a1f05033ce3f456c.jpg');
+}
+.centerContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .rowContainer{
     display: flex;
 }
 .internalbuttons{
-    min-height: 40px;
-    min-width: 40px;
+    min-height: 6.5vh;
+    min-width: 6.5vh;
+    margin: 1vh;
     outline: none;
     border: none;
     border-radius: 2px;
@@ -30,7 +49,7 @@ body{
 /* Status Bar */
 .statusBar{
     width: 100%;
-    /* min-height: 20px; */
+    height: 5vh;
     background-color: black;
     position: absolute;
     bottom:0;
@@ -43,10 +62,10 @@ body{
 
 /* Tool Panel */
 .toolPanel{
-    margin-left: 20px;
-    padding: 20px;
+    margin-left: 2vw;
+    padding: 5px;
     right: 12.5%;
-    height: 300px;
+    height: 76vh;
     background-color: rgb(239,239,239);
     border-radius: 20px;
     border: none;
@@ -56,16 +75,20 @@ body{
     justify-content: center;
     align-items: center;
     font: 500 22px Poppins;
-    max-width: 150px;
+    width: 15vw;
+}
+.toolPanel span{
+    font: 600 1.8vw/2vw Poppins;
 }
 .restartButton button{
+    width: 14vw;
     padding: 5px;
     margin: 5px;
     border: none;
     outline: none;
     border-radius: 10px;
     white-space: nowrap;
-    font: 500 30px Poppins;
+    font: 500 1.6vw/2vw Poppins;
 }
 .restartButton button:focus{
     border: none;
@@ -73,18 +96,6 @@ body{
 }
 .restartButton button:hover{
     background-color: azure;
-}
-.restartButton button span{
-    vertical-align: middle;
-    display: inline-block;
-    max-width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: max-width 1s;
-    font: 500 22px Poppins;
-}
-.restartButton button:hover span{
-    max-width: 7rem;
 }
 .winnerDisplayWindow{
     position: absolute;
@@ -197,4 +208,29 @@ body{
     border: none;
     color: white;
     background-color: rgba(240, 56, 0, 0.5);
+}
+.notResponsive{
+    display: none;
+}
+
+@media (max-width:700px) {
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('https://i.pinimg.com/originals/5d/9f/61/5d9f6140fb8e45c1a1f05033ce3f456c.jpg');
+    }
+    #mainContainer{
+        display:none;
+    }
+    .notResponsive{
+        display:block;
+        margin: 10%;
+        padding: 5%;
+    }
+    .notResponsive p{
+        font: 500 2rem/3rem black ;
+        text-align: center;
+    }
 }

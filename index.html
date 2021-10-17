@@ -7,201 +7,212 @@
     <link rel="stylesheet" href="./assests/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Ultimate Tic Tac Toe</title>
-    <script src=".assests/scripts/jquery-3.6.0.min.js" defer></script>
+    <script src="./assests/scripts/jquery-3.6.0.min.js" defer></script>
     <script src="./assests/scripts/confetti.min.js" defer></script>
     <script src="./assests/scripts/script.js" defer></script>
 </head>
 <body>
-    <div class="">
-        <div class="rowContainer" >
-            <div class="d-flex flex-column" style="border-right: 5px solid black;">
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box1cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box1cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box1cell3" class="m-2 internalbuttons" ></button>
+    <div class="" id="mainContainer">
+        <div class="mainTitle"><span>Ultimate Tic Tac Toe</span></div>
+        <div class="centerContainer">
+            <div class="" id="">
+                <div class="rowContainer" >
+                    <div class="d-flex flex-column" style="border-right: 0.5vh solid black;">
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box1cell1" class="internalbuttons" ></button>
+                            <button id="box1cell2" class="internalbuttons" ></button>
+                            <button id="box1cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box1cell4" class="internalbuttons" ></button>
+                            <button id="box1cell5" class="internalbuttons" ></button>
+                            <button id="box1cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box1cell7" class="internalbuttons" ></button>
+                            <button id="box1cell8" class="internalbuttons" ></button>
+                            <button id="box1cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column " style="border-right: 0.5vh solid black;">
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box2cell1" class="internalbuttons" ></button>
+                            <button id="box2cell2" class="internalbuttons" ></button>
+                            <button id="box2cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box2cell4" class="internalbuttons" ></button>
+                            <button id="box2cell5" class="internalbuttons" ></button>
+                            <button id="box2cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box2cell7" class="internalbuttons" ></button>
+                            <button id="box2cell8" class="internalbuttons" ></button>
+                            <button id="box2cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box3cell1" class="internalbuttons" ></button>
+                            <button id="box3cell2" class="internalbuttons" ></button>
+                            <button id="box3cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box3cell4" class="internalbuttons" ></button>
+                            <button id="box3cell5" class="internalbuttons" ></button>
+                            <button id="box3cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box3cell7" class="internalbuttons" ></button>
+                            <button id="box3cell8" class="internalbuttons" ></button>
+                            <button id="box3cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box1cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box1cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box1cell6" class="m-2 internalbuttons" ></button>
+                <hr style="border-top: 0.5vh solid black; margin: 0;">
+                <div class="rowContainer">
+                    <div class="d-flex flex-column" style="border-right: 0.5vh solid black;">
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box4cell1" class="internalbuttons" ></button>
+                            <button id="box4cell2" class="internalbuttons" ></button>
+                            <button id="box4cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box4cell4" class="internalbuttons" ></button>
+                            <button id="box4cell5" class="internalbuttons" ></button>
+                            <button id="box4cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box4cell7" class="internalbuttons" ></button>
+                            <button id="box4cell8" class="internalbuttons" ></button>
+                            <button id="box4cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column" style="border-right: 0.5vh solid black;">
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box5cell1" class="internalbuttons" ></button>
+                            <button id="box5cell2" class="internalbuttons" ></button>
+                            <button id="box5cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box5cell4" class="internalbuttons" ></button>
+                            <button id="box5cell5" class="internalbuttons" ></button>
+                            <button id="box5cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box5cell7" class="internalbuttons" ></button>
+                            <button id="box5cell8" class="internalbuttons" ></button>
+                            <button id="box5cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column ">
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box6cell1" class="internalbuttons" ></button>
+                            <button id="box6cell2" class="internalbuttons" ></button>
+                            <button id="box6cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box6cell4" class="internalbuttons" ></button>
+                            <button id="box6cell5" class="internalbuttons" ></button>
+                            <button id="box6cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex mr-2 ml-2">
+                            <button id="box6cell7" class="internalbuttons" ></button>
+                            <button id="box6cell8" class="internalbuttons" ></button>
+                            <button id="box6cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box1cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box1cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box1cell9" class="m-2 internalbuttons" ></button>
+                <hr style="border-top: 0.5vh solid black; margin: 0;">
+                <div class="rowContainer">
+                    <div class="d-flex flex-column" style="border-right: 0.5vh solid black;">
+                        <div class="d-flex ml-2 mr-2">
+                            <button id="box7cell1" class="internalbuttons" ></button>
+                            <button id="box7cell2" class="internalbuttons" ></button>
+                            <button id="box7cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex ml-2 mr-2">
+                            <button id="box7cell4" class="internalbuttons" ></button>
+                            <button id="box7cell5" class="internalbuttons" ></button>
+                            <button id="box7cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex ml-2 mr-2">
+                            <button id="box7cell7" class="internalbuttons" ></button>
+                            <button id="box7cell8" class="internalbuttons" ></button>
+                            <button id="box7cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column" style="border-right: 0.5vh solid black;">
+                        <div class="d-flex ml-2 mr-2">
+                            <button id="box8cell1" class="internalbuttons" ></button>
+                            <button id="box8cell2" class="internalbuttons" ></button>
+                            <button id="box8cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex ml-2 mr-2">
+                            <button id="box8cell4" class="internalbuttons" ></button>
+                            <button id="box8cell5" class="internalbuttons" ></button>
+                            <button id="box8cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex ml-2 mr-2">
+                            <button id="box8cell7" class="internalbuttons" ></button>
+                            <button id="box8cell8" class="internalbuttons" ></button>
+                            <button id="box8cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex ml-2 mr-2" >
+                            <button id="box9cell1" class="internalbuttons" ></button>
+                            <button id="box9cell2" class="internalbuttons" ></button>
+                            <button id="box9cell3" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex ml-2 mr-2">
+                            <button id="box9cell4" class="internalbuttons" ></button>
+                            <button id="box9cell5" class="internalbuttons" ></button>
+                            <button id="box9cell6" class="internalbuttons" ></button>
+                        </div>
+                        <div class="d-flex ml-2 mr-2">
+                            <button id="box9cell7" class="internalbuttons" ></button>
+                            <button id="box9cell8" class="internalbuttons" ></button>
+                            <button id="box9cell9" class="internalbuttons" ></button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="d-flex flex-column " style="border-right: 5px solid black;">
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box2cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box2cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box2cell3" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box2cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box2cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box2cell6" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box2cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box2cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box2cell9" class="m-2 internalbuttons" ></button>
-                </div>
-            </div>
-            <div class="d-flex flex-column">
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box3cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box3cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box3cell3" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box3cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box3cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box3cell6" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box3cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box3cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box3cell9" class="m-2 internalbuttons" ></button>
-                </div>
+            <div id="statusBar" class="statusBar">X Moves First | Player 1 | Free Move</div>
+            <div class="toolPanel">
+                <span>
+                    TOOL BOX
+                </span>
+                <div id="restartButton" class="restartButton"><button onclick="undoButton()">&#9100; Undo </button></div>
+                <div id="restartButton" class="restartButton"><button onclick="redoButton()">&#9100; Redo </button></div>
+                <div id="restartButton" class="restartButton"><button onclick="restartButtonClick()">&#8634; Restart </button></div>
+                <div id="restartButton" class="restartButton"><button onclick="autoPlay()">&#9658; Auto Play </button></div>
+                <div id="restartButton" class="restartButton"><button onclick="showInstructions()">&#9432; Instructions </button></div>
             </div>
         </div>
-        <hr style="border-top: 5px solid black; margin: 0;">
-        <div class="rowContainer">
-            <div class="d-flex flex-column" style="border-right: 5px solid black;">
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box4cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box4cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box4cell3" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box4cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box4cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box4cell6" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box4cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box4cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box4cell9" class="m-2 internalbuttons" ></button>
-                </div>
+        <div id="blurOverlay" ></div>
+        <div id="instructions" class="instructions">
+            <div class="mainInstructionsPanel">
+                <ol>
+                    <li> In a game of ultimate tic tac toe you have 9 regular games that combined makes a single big game</li>
+                    <li> X always moves first</li>
+                    <li> The first player can Mark anywhere out of the 9 Grids</li>
+                    <li> The other player has to mark on the Grid which is similar to the GridNumber marked by the first player on outer Grid.</li>
+                    <li></li>
+                </ul> 
+    
             </div>
-            <div class="d-flex flex-column" style="border-right: 5px solid black;">
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box5cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box5cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box5cell3" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box5cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box5cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box5cell6" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box5cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box5cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box5cell9" class="m-2 internalbuttons" ></button>
-                </div>
-            </div>
-            <div class="d-flex flex-column ">
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box6cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box6cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box6cell3" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box6cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box6cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box6cell6" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex mr-2 ml-2">
-                    <button id="box6cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box6cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box6cell9" class="m-2 internalbuttons" ></button>
-                </div>
-            </div>
+            <button id="skipInstructions" class="skipInstructions" onclick="skipInstructionsButton()">Start</button>
         </div>
-        <hr style="border-top: 5px solid black; margin: 0;">
-        <div class="rowContainer">
-            <div class="d-flex flex-column" style="border-right: 5px solid black;">
-                <div class="d-flex ml-2 mr-2">
-                    <button id="box7cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box7cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box7cell3" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex ml-2 mr-2">
-                    <button id="box7cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box7cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box7cell6" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex ml-2 mr-2">
-                    <button id="box7cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box7cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box7cell9" class="m-2 internalbuttons" ></button>
-                </div>
-            </div>
-            <div class="d-flex flex-column" style="border-right: 5px solid black;">
-                <div class="d-flex ml-2 mr-2">
-                    <button id="box8cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box8cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box8cell3" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex ml-2 mr-2">
-                    <button id="box8cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box8cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box8cell6" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex ml-2 mr-2">
-                    <button id="box8cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box8cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box8cell9" class="m-2 internalbuttons" ></button>
-                </div>
-            </div>
-            <div class="d-flex flex-column">
-                <div class="d-flex ml-2 mr-2" >
-                    <button id="box9cell1" class="m-2 internalbuttons" ></button>
-                    <button id="box9cell2" class="m-2 internalbuttons" ></button>
-                    <button id="box9cell3" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex ml-2 mr-2">
-                    <button id="box9cell4" class="m-2 internalbuttons" ></button>
-                    <button id="box9cell5" class="m-2 internalbuttons" ></button>
-                    <button id="box9cell6" class="m-2 internalbuttons" ></button>
-                </div>
-                <div class="d-flex ml-2 mr-2">
-                    <button id="box9cell7" class="m-2 internalbuttons" ></button>
-                    <button id="box9cell8" class="m-2 internalbuttons" ></button>
-                    <button id="box9cell9" class="m-2 internalbuttons" ></button>
-                </div>
-            </div>
+        <div id="restartWindow" class="restartWindow">
+            <span>Do you want to Restart the Game?<br>All progress will be lost!</span>
+            <button id="restartYes" class="restartYes" onclick="restartButtonClickYes()">Proceed</button>
+            <button id="restartNo" class="restartNo" onclick="restartButtonClickNo()">Cancel</button>
         </div>
+        <div id="winnerDisplayWindow" class="winnerDisplayWindow"  style="display: none"><button onclick="restartButtonClickYes()">&#8634; <span> Restart </span> </div>    
     </div>
-    <div id="statusBar" class="statusBar">X Moves First | Player 1 | Free Move</div>
-    <div class="toolPanel">
-        TOOL BOX
-        <div id="restartButton" class="restartButton"><button onclick="undoButton()">&#9100; <span> Undo </span> </button></div>
-        <div id="restartButton" class="restartButton"><button onclick="restartButtonClick()">&#8634; <span> Restart </span> </button></div>
-        <div id="restartButton" class="restartButton"><button onclick="autoPlay()">&#9658; <span> Auto Play </span> </button></div>
-        <div id="restartButton" class="restartButton"><button onclick="showInstructions()">&#9432; <span> Instructions </span> </button></div>
+    <div class="notResponsive">
+        <p>Please view this in Desktop View</p>
     </div>
-    <div id="blurOverlay" ></div>
-    <div id="instructions" class="instructions">
-        <div class="mainInstructionsPanel">
-            <ol>
-                <li> In a game of ultimate tic tac toe you have 9 regular games that combined makes a single big game</li>
-                <li> X always moves first</li>
-                <li> The first player can Mark anywhere out of the 9 Grids</li>
-                <li> The other player has to mark on the Grid which is similar to the GridNumber marked by the first player on outer Grid.</li>
-                <li></li>
-            </ul> 
-
-        </div>
-        <button id="skipInstructions" class="skipInstructions" onclick="skipInstructionsButton()">Start</button>
-    </div>
-    <div id="restartWindow" class="restartWindow">
-        <span>Do you want to Restart the Game?<br>All progress will be lost!</span>
-        <button id="restartYes" class="restartYes" onclick="restartButtonClickYes()">Proceed</button>
-        <button id="restartNo" class="restartNo" onclick="restartButtonClickNo()">Cancel</button>
-    </div>
-    <div id="winnerDisplayWindow" class="winnerDisplayWindow"  style="display: none"><button onclick="restartButtonClickYes()">&#8634; <span> Restart </span> </div>
 </body>
 </html>
