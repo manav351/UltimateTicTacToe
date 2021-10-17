@@ -97,10 +97,9 @@ function disableAllgrids(gridNumber){       // Here the gridNumber is the grid w
 
 function winnerDisplay(winner){
     confetti.start();
-    let windowD = document.getElementById("winnerDisplayWindow");
     document.getElementById("blurOverlay").style.display = "block";
-    windowD.style.display = "flex";
-    windowD.innerHTML = winner + `<button onclick="restartButtonClickYes()">&#8634; <span> Restart </span>` ;
+    document.getElementById("winnerDisplayWindow").style.display = "flex";
+    document.getElementById("winnerDisplayText").innerHTML = winner;
 }
 
 function checkOuterResult(){                // This functions checks the overall result of Win and Loose
@@ -141,9 +140,7 @@ function restartButtonClickYes(){
             document.getElementById(`box${i}cell${j}`).innerHTML = "";
         }
     }
-    confetti.stop();
-    document.getElementById("blurOverlay").style.display = "none";
-    document.getElementById("winnerDisplayWindow").style.display = "none";
+    winnerWindowCancel();
 }
 
 function restartButtonClickNo(){
@@ -181,4 +178,11 @@ function skipInstructionsButton(){
 function showInstructions(){
     document.getElementById("blurOverlay").style.display = "block";
     document.getElementById("instructions").style.display = "flex";
+}
+
+function winnerWindowCancel(){
+    // disableAllgrids(15);
+    confetti.stop();
+    document.getElementById("blurOverlay").style.display = "none";
+    document.getElementById("winnerDisplayWindow").style.display = "none";
 }

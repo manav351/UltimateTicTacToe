@@ -193,23 +193,34 @@
         <div id="blurOverlay" ></div>
         <div id="instructions" class="instructions">
             <div class="mainInstructionsPanel">
+                <div>Instructions</div><br>
+                In a game of ultimate tic tac toe you have 9 regular games that combined makes a single big game.
                 <ol>
-                    <li> In a game of ultimate tic tac toe you have 9 regular games that combined makes a single big game</li>
-                    <li> X always moves first</li>
-                    <li> The first player can Mark anywhere out of the 9 Grids</li>
-                    <li> The other player has to mark on the Grid which is similar to the GridNumber marked by the first player on outer Grid.</li>
-                    <li></li>
+                    <li> X always moves first.</li>
+                    <li> The first player can Mark anywhere out of the 9 Grids.</li>
+                    <li> The next player has to play in the outer grid which the previous player determines by his moves in inner grid.</li>
+                    <li> Similarly, the game continues</li>
+                    <li> If the previous player targets the next player to a grid which is already taken, then the next player will get a free move</li>
+                    <li> The players have to make Tic Tac Toe pattern in the outer grid to win the game</li>
                 </ul> 
     
             </div>
-            <button id="skipInstructions" class="skipInstructions" onclick="skipInstructionsButton()">Start</button>
+            <button id="skipInstructions" class="skipInstructions" onclick="skipInstructionsButton()">Close</button>
         </div>
         <div id="restartWindow" class="restartWindow">
             <span>Do you want to Restart the Game?<br>All progress will be lost!</span>
             <button id="restartYes" class="restartYes" onclick="restartButtonClickYes()">Proceed</button>
             <button id="restartNo" class="restartNo" onclick="restartButtonClickNo()">Cancel</button>
         </div>
-        <div id="winnerDisplayWindow" class="winnerDisplayWindow"  style="display: none"><button onclick="restartButtonClickYes()">&#8634; <span> Restart </span> </div>    
+        <div id="winnerDisplayWindow" class="winnerDisplayWindow"  style="display: none">
+            <div id="winnerDisplayText"></div>
+            <button onclick="restartButtonClickYes()" id="winnerRestartButton">
+                &#8634; <span> Restart </span>
+            </button> 
+            <button onclick="winnerWindowCancel()" id="winnerCancelButton" >
+                &#8634; <span> Cancel </span>
+            </button> 
+        </div>    
     </div>
     <div class="notResponsive">
         <p>Please view this in Desktop View</p>
