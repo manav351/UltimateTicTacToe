@@ -11,7 +11,13 @@ let undoArray = [];
 $(document).ready(function () {
     gridButtonClickListener();
     playerNameClickListener();
-    grid = new Array(10).fill(new Array(10).fill(0));
+    // Initializing the grid
+    for (let i = 0; i < 10; i++) {
+        grid.push([]);
+        for (let j = 0; j < 10; j++) {
+            grid[i].push(0);
+        }
+    }
 });
 
 // set clickListener for grid buttons
@@ -64,7 +70,7 @@ function buttonpressed(gridNumber, val) {
     checkInnerResult(gridNumber);           // Updates the inner grid result
     disableAllgrids(val);                   // Disables all the grids + enables the target grid
     checkOuterResult();                     // Updates the Outer grid result
-    //consolePrintGridValues();             
+    // consolePrintGridValues();    
 }
 
 function updateButtonValue(gridNumber, val) {
