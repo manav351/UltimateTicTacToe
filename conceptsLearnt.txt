@@ -1,5 +1,0 @@
-The default size of HTML is 16px which means 1rem == 16px. This can be altered using CSS.
-html{
-    font-size : 62.5% ;
-}
-Now default size is set to 10px which is kind of more managable.
