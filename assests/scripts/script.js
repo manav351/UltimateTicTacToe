@@ -99,6 +99,10 @@ function checkInnerResult(gridNumber, val) {       // Updates the result i.e., i
     }
     if (winnerNumber != 0) {
         grid[0][gridNumber - 1] = winnerNumber;
+        if(winnerNumber == 1)
+            $(`#box${gridNumber}Container`).append('<div class="winnerSmallOverlay" style="background-color:#ff00009c">X</div>')
+        else
+            $(`#box${gridNumber}Container`).append('<div class="winnerSmallOverlay" style="background-color:#00ffa79c">O</div>')
         innerWinHelpUndo.push([gridNumber, val]);
     }
 }
@@ -213,6 +217,7 @@ function restartButtonClickYes() {
     redoArray.length = 0;                                            // Resets the Redo Array
     innerWinHelpUndo.length = 0;                                     // Resets the InnerWin Help Undo Array
     $('#undoButton').css('disabled', true);                         // Disables the Undo Button
+    $(".winnerSmallOverlay").remove();
 }
 
 function restartButtonClickNo() {
@@ -268,6 +273,7 @@ function undoButton() {
         grid[first][second-1] = 0;             // Update the inner grid
         if(innerWinHelpUndo.length != 0 && first == innerWinHelpUndo.slice(-1)[0][0] && second == innerWinHelpUndo.slice(-1)[0][1]) {
             grid[0][first-1] = 0;
+            $(`#box${first}Container .winnerSmallOverlay`).remove();
             innerWinHelpUndo.pop();
         }
         document.getElementById(`box${first}cell${second}`).innerHTML = "";               // Update the HTML box

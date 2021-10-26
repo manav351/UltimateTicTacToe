@@ -354,6 +354,25 @@ body{
     display: none;
 }
 
+div.winnerSmallOverlay {
+    position: absolute;
+    background-color: #ff00009c;
+    top: 0;
+    left: 0;
+    width: 96%;
+    margin: 2%;
+    display: flex;
+    height: 96%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    font-size: 20vh;
+}
+
+div#box1Container, div#box2Container, div#box3Container, div#box4Container, div#box5Container, div#box6Container, div#box7Container, div#box8Container, div#box9Container{
+    position: relative;
+}
+
 @media (max-width:599px) {
     body{
         height: 100vh;
