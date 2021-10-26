@@ -7,6 +7,7 @@ const getDigits = (string) => string.replace(/\D/g, '');
 let grid = [];
 let counter = 1;
 let undoArray = [];
+let redoArray = [];
 
 $(document).ready(function () {
     gridButtonClickListener();
@@ -70,11 +71,12 @@ function buttonpressed(gridNumber, val) {
     checkInnerResult(gridNumber);           // Updates the inner grid result
     disableAllgrids(val);                   // Disables all the grids + enables the target grid
     checkOuterResult();                     // Updates the Outer grid result
+    redoArray.length = 0;                   // Clearing the redo array
     // consolePrintGridValues();    
 }
 
 function updateButtonValue(gridNumber, val) {
-    document.getElementById(`box${gridNumber}cell${val}`).innerHTML = (grid[gridNumber][val - 1] == 1) ? "\u274C" : "\u25EF";
+    document.getElementById(`box${gridNumber}cell${val}`).innerHTML = (grid[gridNumber][val - 1] == 1) ? '<img src="./assests/images/cross.svg" alt="X">' : '<img src="./assests/images/circle.svg" alt="O">';
 }
 
 function checkInnerResult(gridNumber) {       // Updates the result i.e., it checks the active grid for answers
@@ -174,6 +176,7 @@ function restartButtonClick() {
 function restartButtonClickYes() {
     document.getElementById("blurOverlay").style.display = "none";
     document.getElementById("restartWindow").style.display = "none";
+    if(counter == 2) highlightCurrentPlayer();
     counter = 1;
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 9; j++)
@@ -188,6 +191,7 @@ function restartButtonClickYes() {
     confetti.stop();
     document.getElementById("blurOverlay").style.display = "none";
     document.getElementById("winnerDisplayWindow").style.display = "none";
+    undoArray.length = 0;
 }
 
 function restartButtonClickNo() {
@@ -236,6 +240,13 @@ function winnerWindowCancel() {
 }
 
 function undoButton() {
-    alert("this function is in Development")
-
+    if (undoArray.length != 0) {
+        let undoValue = undoArray.pop();            // Pop the last value from the array
+        redoArray.push(undoValue);                  // Push the value to the redo array
+        grid[parseInt(undoValue[0])][parseInt(undoValue[1])-1] = 0;             // Update the grid
+        document.getElementById(`box${undoValue[0]}cell${undoValue[1]}`).innerHTML = "";               // Update the HTML box
+        togglePlayer();
+        consolePrintGridValues();
+        console.log(undoValue[0], undoValue[1]);
+    }
 }

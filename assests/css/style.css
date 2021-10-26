@@ -118,6 +118,10 @@ body{
     border-radius: 2px;
     background-color:#ffffff;
 }
+.internalbuttons img{
+    width: 4.5vh;
+    height: 4.5vh;
+}
 .internalbuttons:hover{
     background-color: azure;
 }
@@ -127,7 +131,7 @@ body{
 .internalbuttons:disabled{
     /* border: 1px solid #999999; */
     background-color: #ffffff9d;
-    color: #ffffff;
+    color: #000000;
 }
 
 /* Status Bar */
@@ -214,13 +218,13 @@ body{
     top: 30%;
     height: 40%;
     width: 50%;
-    background: #005AA7; 
-    background: -webkit-linear-gradient(to bottom, #FFFDE4, #005AA7); 
-    background: linear-gradient(to bottom, #FFFDE4, #005AA7);
     font-size: 44px;
     font-weight: 700;
+    background-color: #f2c17d;
+    background-image: linear-gradient(204deg, #f2c17d 0%, #b82e1f 74%);
     color: rgba(255,255,255,0.9);
     /* color: white; */
+    z-index: 3;
 }
 .winnerDisplayWindow button#winnerRestartButton{
     border: none;
@@ -286,14 +290,20 @@ body{
 }
 .skipInstructions{
     margin: 10px;
-    padding: 1%;
+    /* padding: 1%; */
     border: none;
     position: absolute;
+    display: flex;
     outline: none;
     right: 2%;
     top: 2%;
     border-radius: 50%;
-    background-color: rgb(41 201 237 / 53%);
+    width: 40px;
+    background-color: rgb(255 255 255 / 25%);
+    height: 40px;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 .restartWindow{

@@ -185,7 +185,7 @@
                 <div id="restartButton" class="restartButton"><button onclick="undoButton()">&#9100; Undo </button></div>
                 <div id="restartButton" class="restartButton"><button onclick="redoButton()">&#9100; Redo </button></div>
                 <div id="restartButton" class="restartButton"><button onclick="restartButtonClick()">&#8634; Restart </button></div>
-                <div id="restartButton" class="restartButton"><button onclick="autoPlay()">&#9658; Auto Play </button></div>
+                <div id="restartButton" class="restartButton d-none"><button onclick="autoPlay()">&#9658; Auto Play </button></div>
                 <div id="restartButton" class="restartButton"><button onclick="showInstructions()">&#9432; Instructions </button></div>
             </div>
         </div>
@@ -193,18 +193,16 @@
         <div id="instructions" class="instructions">
             <div class="mainInstructionsPanel">
                 <div>Instructions</div><br>
-                In a game of ultimate tic tac toe you have 9 regular games that combined makes a single big game.
+                Each small 3 × 3 tic-tac-toe board is referred to as a Inner board, and the larger 3 × 3 board is referred to as the Outer board.
                 <ol>
-                    <li> X always moves first.</li>
-                    <li> The first player can Mark anywhere out of the 9 Grids.</li>
-                    <li> The next player has to play in the outer grid which the previous player determines by his moves in inner grid.</li>
-                    <li> Similarly, the game continues</li>
-                    <li> If the previous player targets the next player to a grid which is already taken, then the next player will get a free move</li>
-                    <li> The players have to make Tic Tac Toe pattern in the outer grid to win the game</li>
+                    <li> The game starts with X playing wherever they want in any of the 81 empty spots. This move "sends" their opponent to its relative location.</li>
+                    <li> The next player has play in the inner board highlighted. The concept is that the outer board and inner board are mapped. The previous player move governs the location of the next player's board.</li>
+                    <li> If a move is played so that it is to win a local board by the rules of normal tic-tac-toe, then the entire local board is marked as a victory for the player in the global board i.e., the marker on the global board for the winner player is made.</li>
+                    <li> Once a local board is won by a player or it is filled completely, no more moves may be played in that board. If a player is sent to such a board, then that player may play in any other board i.e., the player can play corresponding to any available spots in 81 total spots.</li>
+                    <li> Game play ends when either a player wins the global board or there are no legal moves remaining, in which case the game is a draw.</li>
                 </ol> 
-                * Autoplay is a feature to check one of the Winner's game
             </div>
-            <button id="skipInstructions" class="skipInstructions" onclick="skipInstructionsButton()">Close</button>
+            <button id="skipInstructions" class="skipInstructions" onclick="skipInstructionsButton()"><img src="./assests/images/cross.svg" alt="X" style="height: 20px;width: 20px;"></button>
         </div>
         <div id="restartWindow" class="restartWindow">
             <span>Do you want to Restart the Game?<br>All progress will be lost!</span>
