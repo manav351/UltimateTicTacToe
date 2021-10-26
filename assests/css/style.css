@@ -160,7 +160,7 @@ body{
     letter-spacing: 1px;
     text-transform: uppercase;
     transition : filter 300ms ease;
-    filter: blur(0.8px);
+    color: rgb(255 255 255 / 70%);
 }
 .player_names:hover label{
     color: aqua;
@@ -168,7 +168,7 @@ body{
 }
 .activePlayer{
     transition : filter 300ms ease;
-    filter: blur(0px);
+    color: rgb(205, 255, 164);
 }
 /* Tool Panel */
 .toolPanel{
