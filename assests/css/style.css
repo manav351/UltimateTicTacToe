@@ -190,7 +190,7 @@ body{
 .toolPanel span{
     font: 600 1.8vw/2vw Poppins;
 }
-.restartButton button{
+.toolbarButtons button{
     width: 14vw;
     padding: 5px;
     margin: 5px;
@@ -200,11 +200,11 @@ body{
     white-space: nowrap;
     font: 500 1.6vw/2vw Poppins;
 }
-.restartButton button:focus{
+.toolbarButtons button:focus{
     border: none;
     outline: none;
 }
-.restartButton button:hover{
+.toolbarButtons button:hover{
     background-color: azure;
 }
 .winnerDisplayWindow{

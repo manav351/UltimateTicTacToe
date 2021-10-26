@@ -127,19 +127,28 @@ function disableAllgrids(gridNumber) {       // Here the gridNumber is the grid 
 }
 
 function checkOuterResult() {                // This functions checks the overall result of Win and Loose
+    let winnerNumber = 0;
     for (let i = 0; i < 3; i++) {                   // Here the gridNumber is the presently marked grid
         if (grid[0][0 + (3 * i)] == grid[0][1 + (3 * i)] && grid[0][1 + (3 * i)] == grid[0][2 + (3 * i)] && grid[0][0 + (3 * i)] != 0) {
-            winnerDisplay(`Player ${grid[0][3 * i]} Won`);
+            winnerNumber = grid[0][3 * i];
         }
         if (grid[0][0 + i] == grid[0][3 + i] && grid[0][3 + i] == grid[0][6 + i] && grid[0][0 + i] != 0) {
-            winnerDisplay(`Player ${grid[0][i]} Won`);
+            winnerNumber = grid[0][i];
         }
     }
     if (grid[0][0] == grid[0][4] && grid[0][4] == grid[0][8] && grid[0][0] != 0) {
-        winnerDisplay(`Player ${grid[0][4]} Won`);
+        winnerNumber = grid[0][4];
     }
     if (grid[0][2] == grid[0][4] && grid[0][4] == grid[0][6] && grid[0][2] != 0) {
-        winnerDisplay(`Player ${grid[0][4]} Won`);
+        winnerNumber = grid[0][4];
+    }
+    if (winnerNumber != 0) {
+        winnerDisplay(`${$("#player"+winnerNumber+"name").text().toUpperCase()} Won`);
+    }
+    else {
+        if (grid[0].every(element => element != 0)) {
+            winnerDisplay(`Draw`);
+        }
     }
 }
 
@@ -157,7 +166,7 @@ function consolePrintGridValues() {
             temporaryString += grid[i][j] + " ";
         temporaryString += "\n";
     }
-    console.clear();
+    // console.clear();
     console.log(temporaryString);
 }
 
@@ -174,24 +183,25 @@ function restartButtonClick() {
 }
 
 function restartButtonClickYes() {
-    document.getElementById("blurOverlay").style.display = "none";
-    document.getElementById("restartWindow").style.display = "none";
-    if(counter == 2) highlightCurrentPlayer();
-    counter = 1;
-    for (let i = 0; i < 10; i++) {
+    document.getElementById("blurOverlay").style.display = "none";      // Hides Blur Overlay
+    document.getElementById("restartWindow").style.display = "none";    // Hides Restart Window
+    document.getElementById("winnerDisplayWindow").style.display = "none";  // Hides Winner Display Window
+    confetti.stop();                                                    // Stops the confetti     
+    if(counter == 2) highlightCurrentPlayer();                          // Resets the Highlight if O is the current player 
+    counter = 1;                                                         // Resets the Player Counter
+    for (let i = 0; i < 10; i++) {                                      // Resets the Grid
         for (let j = 0; j < 9; j++)
             grid[i][j] = 0;
     }
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 10; i++) {                                      // Resets the Buttons i.e., Enables all the buttons
         for (let j = 1; j < 10; j++) {
             document.getElementById(`box${i}cell${j}`).disabled = false;
             document.getElementById(`box${i}cell${j}`).innerHTML = "";
         }
     }
-    confetti.stop();
-    document.getElementById("blurOverlay").style.display = "none";
-    document.getElementById("winnerDisplayWindow").style.display = "none";
-    undoArray.length = 0;
+    undoArray.length = 0;                                            // Resets the Undo Array
+    redoArray.length = 0;                                            // Resets the Redo Array
+    $('#undoButton').css('disabled', true);                         // Disables the Undo Button
 }
 
 function restartButtonClickNo() {
@@ -241,12 +251,33 @@ function winnerWindowCancel() {
 
 function undoButton() {
     if (undoArray.length != 0) {
-        let undoValue = undoArray.pop();            // Pop the last value from the array
-        redoArray.push(undoValue);                  // Push the value to the redo array
-        grid[parseInt(undoValue[0])][parseInt(undoValue[1])-1] = 0;             // Update the grid
+        let undoValue = undoArray.pop();                // Pop the last value from the array
+        redoArray.push(undoValue);                      // Push the value to the redo array
+        grid[parseInt(undoValue[0])][parseInt(undoValue[1])-1] = 0;             // Update the inner grid
         document.getElementById(`box${undoValue[0]}cell${undoValue[1]}`).innerHTML = "";               // Update the HTML box
+        disableAllgrids(parseInt(undoValue[0]));          // Re-evalute which grid has to be disabled & enabled
         togglePlayer();
-        consolePrintGridValues();
+        highlightCurrentPlayer();
+        // consolePrintGridValues();
         console.log(undoValue[0], undoValue[1]);
+    }
+}
+
+function redoButton(){
+    if(redoArray.length != 0){
+        let redoValue = redoArray.pop();
+        let [first,second] = [parseInt(redoValue[0]),parseInt(redoValue[1])];
+        grid[first][second - 1] = counter;      //updating inner grid with selected user
+        document.getElementById(`box${first}cell${second}`).disabled = true;      // Disabling the calling button
+
+        togglePlayer();
+        highlightCurrentPlayer();
+        updateUndoArray(first, second);
+        updateButtonValue(first, second);
+        checkInnerResult(first);                // Updates the inner grid result
+        disableAllgrids(second);                // Disables all the grids + enables the target grid
+        checkOuterResult();                     // Updates the Outer grid result
+        consolePrintGridValues();
+        console.log(first,second);
     }
 }
