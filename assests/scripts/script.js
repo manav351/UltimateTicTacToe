@@ -8,6 +8,7 @@ let grid = [];
 let counter = 1;
 let undoArray = [];
 let redoArray = [];
+let innerWinHelpUndo = [];
 
 $(document).ready(function () {
     gridButtonClickListener();
@@ -68,7 +69,7 @@ function buttonpressed(gridNumber, val) {
     highlightCurrentPlayer();
     updateUndoArray(gridNumber, val);
     updateButtonValue(gridNumber, val);
-    checkInnerResult(gridNumber);           // Updates the inner grid result
+    checkInnerResult(gridNumber, val);           // Updates the inner grid result
     disableAllgrids(val);                   // Disables all the grids + enables the target grid
     checkOuterResult();                     // Updates the Outer grid result
     redoArray.length = 0;                   // Clearing the redo array
@@ -79,20 +80,26 @@ function updateButtonValue(gridNumber, val) {
     document.getElementById(`box${gridNumber}cell${val}`).innerHTML = (grid[gridNumber][val - 1] == 1) ? '<img src="./assests/images/cross.svg" alt="X">' : '<img src="./assests/images/circle.svg" alt="O">';
 }
 
-function checkInnerResult(gridNumber) {       // Updates the result i.e., it checks the active grid for answers
+function checkInnerResult(gridNumber, val) {       // Updates the result i.e., it checks the active grid for answers
+    let winnerNumber = 0;
     for (let i = 0; i < 3; i++) {               // Here the gridNumber is the presently marked grid
         if (grid[gridNumber][0 + (3 * i)] == grid[gridNumber][1 + (3 * i)] && grid[gridNumber][1 + (3 * i)] == grid[gridNumber][2 + (3 * i)] && grid[gridNumber][0 + (3 * i)] != 0) {
-            grid[0][gridNumber - 1] = grid[gridNumber][0 + (3 * i)];
+            winnerNumber = grid[gridNumber][0 + (3 * i)];
+            // grid[0][gridNumber - 1] = grid[gridNumber][0 + (3 * i)];
         }
         if (grid[gridNumber][0 + i] == grid[gridNumber][3 + i] && grid[gridNumber][3 + i] == grid[gridNumber][6 + i] && grid[gridNumber][0 + i] != 0) {
-            grid[0][gridNumber - 1] = grid[gridNumber][0 + i];
+            winnerNumber = grid[gridNumber][0 + i];
         }
     }
     if (grid[gridNumber][0] == grid[gridNumber][4] && grid[gridNumber][4] == grid[gridNumber][8] && grid[gridNumber][0] != 0) {
-        grid[0][gridNumber - 1] = grid[gridNumber][4];
+        winnerNumber = grid[gridNumber][4];
     }
     if (grid[gridNumber][2] == grid[gridNumber][4] && grid[gridNumber][4] == grid[gridNumber][6] && grid[gridNumber][2] != 0) {
-        grid[0][gridNumber - 1] = grid[gridNumber][4];
+        winnerNumber = grid[gridNumber][4];
+    }
+    if (winnerNumber != 0) {
+        grid[0][gridNumber - 1] = winnerNumber;
+        innerWinHelpUndo.push([gridNumber, val]);
     }
 }
 
@@ -163,7 +170,10 @@ function consolePrintGridValues() {
     let temporaryString = "";        // Print all grid values
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 9; j++)
-            temporaryString += grid[i][j] + " ";
+            if(grid[i][j] == 0)
+                temporaryString += "_ ";
+            else
+                temporaryString += grid[i][j] + " ";
         temporaryString += "\n";
     }
     // console.clear();
@@ -201,6 +211,7 @@ function restartButtonClickYes() {
     }
     undoArray.length = 0;                                            // Resets the Undo Array
     redoArray.length = 0;                                            // Resets the Redo Array
+    innerWinHelpUndo.length = 0;                                     // Resets the InnerWin Help Undo Array
     $('#undoButton').css('disabled', true);                         // Disables the Undo Button
 }
 
@@ -253,13 +264,18 @@ function undoButton() {
     if (undoArray.length != 0) {
         let undoValue = undoArray.pop();                // Pop the last value from the array
         redoArray.push(undoValue);                      // Push the value to the redo array
-        grid[parseInt(undoValue[0])][parseInt(undoValue[1])-1] = 0;             // Update the inner grid
-        document.getElementById(`box${undoValue[0]}cell${undoValue[1]}`).innerHTML = "";               // Update the HTML box
-        disableAllgrids(parseInt(undoValue[0]));          // Re-evalute which grid has to be disabled & enabled
+        let [first,second] = [parseInt(undoValue[0]),parseInt(undoValue[1])];
+        grid[first][second-1] = 0;             // Update the inner grid
+        if(innerWinHelpUndo.length != 0 && first == innerWinHelpUndo.slice(-1)[0][0] && second == innerWinHelpUndo.slice(-1)[0][1]) {
+            grid[0][first-1] = 0;
+            innerWinHelpUndo.pop();
+        }
+        document.getElementById(`box${first}cell${second}`).innerHTML = "";               // Update the HTML box
+        disableAllgrids(parseInt(second));          // Re-evalute which grid has to be disabled & enabled
         togglePlayer();
         highlightCurrentPlayer();
         // consolePrintGridValues();
-        console.log(undoValue[0], undoValue[1]);
+        // console.log(first, second);
     }
 }
 
@@ -274,10 +290,10 @@ function redoButton(){
         highlightCurrentPlayer();
         updateUndoArray(first, second);
         updateButtonValue(first, second);
-        checkInnerResult(first);                // Updates the inner grid result
+        checkInnerResult(first, second);                // Updates the inner grid result
         disableAllgrids(second);                // Disables all the grids + enables the target grid
         checkOuterResult();                     // Updates the Outer grid result
-        consolePrintGridValues();
-        console.log(first,second);
+        // consolePrintGridValues();
+        // console.log(first,second);
     }
 }
