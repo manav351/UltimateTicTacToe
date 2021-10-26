@@ -184,6 +184,7 @@ function consolePrintGridValues() {
     console.log(temporaryString);
 }
 
+
 function updateUndoArray(a, b) { 
     undoArray.push([a, b]);
 }
@@ -229,9 +230,9 @@ function autoPlay() {
     let playValues = [[1, 9], [9, 1], [1, 5], [5, 1], [1, 1], [9, 4], [4, 6], [6, 4], [4, 5], [5, 4], [4, 4], [9, 7], [7, 3], [3, 7], [7, 5], [5, 7], [7, 7]];
     for (let i = 0; i < 10; i++) {                  // To check whether the user has started playing or not
         for (let j = 0; j < 9; j++)               // If yes, then ask him to refresh first
-            if (grid[i][j] != 0)
-                if (restartButtonClick())    // If user denies, continue the game
-                    return;
+            if (grid[i][j] != 0){
+                restartButtonClickYes();
+            }
     }
     let counter = 0;
     function autoPlayValue() {
@@ -277,13 +278,14 @@ function undoButton() {
             innerWinHelpUndo.pop();
         }
         document.getElementById(`box${first}cell${second}`).innerHTML = "";               // Update the HTML box
-        disableAllgrids(parseInt(second));          // Re-evalute which grid has to be disabled & enabled
+        disableAllgrids(parseInt(first));          // Re-evalute which grid has to be disabled & enabled
         togglePlayer();
         highlightCurrentPlayer();
         // consolePrintGridValues();
         // console.log(first, second);
     }
 }
+
 
 function redoButton(){
     if(redoArray.length != 0){
