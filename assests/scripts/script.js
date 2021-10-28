@@ -47,11 +47,12 @@ function playerNameClickListener(){
     $("#player1name,#player2name").on("click",function(event){
         $(this).attr("contenteditable", "true");
     });
-    $("#player1name,#player2name").on("keypress",function(){
+    $("#player1name,#player2name").on("keypress",function(event){
         const newName = $(this).html();
         if(newName.length > 16) $(this).html(newName.substring(0,16));
         if (event.keyCode === 13) {
             $(this).blur();
+            console.log("newName");
         }
     });
     $("#player1name,#player2name").on("blur",function(){
